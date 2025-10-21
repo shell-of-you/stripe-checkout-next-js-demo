@@ -61,8 +61,9 @@ export default async function handler(req, res) {
                     },
                 },
             ],
-            success_url: `${req.headers.origin}/success`,
-            cancel_url: `${req.headers.origin}/cart`,
+            success_url: "https://shellofyou.framer.website",
+cancel_url: "https://shellofyou.framer.website",
+
         })
 
         res.status(200).json({ id: session.id })

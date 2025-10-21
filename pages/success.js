@@ -108,7 +108,7 @@ export default function SuccessPage() {
             )}
 
             <button
-                onClick={() => (window.location.href = "/")}
+                onClick={() => (window.location.href = "https://shellofyou.framer.website")}
                 style={{
                     marginTop: "2rem",
                     padding: "12px 28px",
