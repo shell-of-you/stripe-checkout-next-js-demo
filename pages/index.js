@@ -7,10 +7,16 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 export default function Home() {
+  console.log("🔥 Проверка! Это сработало?");
+  console.log("Stripe ключ:", process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+
+
+
   const router = useRouter();
   const { status } = router.query;
 
   const [loading, setLoading] = useState(false);
+
 
   const [item, setItem] = useState({
     name: "Apple AirPods",
@@ -39,10 +45,11 @@ export default function Home() {
   };
 
   const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
-  const stripePromise = loadStripe(publishableKey);
+  
+  console.log("Stripe key:", publishableKey); // Добавь это
   const createCheckOutSession = async () => {
     setLoading(true);
-    const stripe = await stripePromise;
+    const stripe = await loadStripe("pk_live_51Njt3yAh3pFjBqXkqEdmwzFugxrpSXU0J4Z8h6jfPESXRSClQc6b7X1cHEJUr0qVy4WMyRjqufCY1rT5AsoFMGJJ00Q3bsFeUD");
     const checkoutSession = await axios.post("/api/create-stripe-session", {
       item: item,
     });
